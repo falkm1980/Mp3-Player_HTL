@@ -78,8 +78,6 @@ Discarded input sections
  .bss           0x00000000        0x0 Mp3-Player.o
  .text.InitKeyboard
                 0x00000000        0x6 Mp3-Player.o
- .text.GetKey_OrigBelegung
-                0x00000000       0xa6 Mp3-Player.o
  .text          0x00000000        0x0 MP3Decoder/vs1011.o
  .data          0x00000000        0x0 MP3Decoder/vs1011.o
  .bss           0x00000000        0x0 MP3Decoder/vs1011.o
@@ -504,35 +502,35 @@ END GROUP
                 0x000011be      0x1fe Mp3-Player.o
                 0x000011be                PlayFile
  .text.startup.main
-                0x000013bc      0x1ee Mp3-Player.o
+                0x000013bc      0x1f0 Mp3-Player.o
                 0x000013bc                main
  .text.HardwareReset
-                0x000015aa       0x22 MP3Decoder/vs1011.o
-                0x000015aa                HardwareReset
+                0x000015ac       0x22 MP3Decoder/vs1011.o
+                0x000015ac                HardwareReset
  .text.WriteCommand
-                0x000015cc       0x2e MP3Decoder/vs1011.o
-                0x000015cc                WriteCommand
+                0x000015ce       0x2e MP3Decoder/vs1011.o
+                0x000015ce                WriteCommand
  .text.InitVS1011e
-                0x000015fa       0x36 MP3Decoder/vs1011.o
-                0x000015fa                InitVS1011e
+                0x000015fc       0x36 MP3Decoder/vs1011.o
+                0x000015fc                InitVS1011e
  .text.SoftwareReset
-                0x00001630       0x1c MP3Decoder/vs1011.o
-                0x00001630                SoftwareReset
+                0x00001632       0x1c MP3Decoder/vs1011.o
+                0x00001632                SoftwareReset
  .text.WriteMP3DataByte
-                0x0000164c        0xa MP3Decoder/vs1011.o
-                0x0000164c                WriteMP3DataByte
+                0x0000164e        0xa MP3Decoder/vs1011.o
+                0x0000164e                WriteMP3DataByte
  .text.StartSineTest
-                0x00001656       0x30 MP3Decoder/vs1011.o
-                0x00001656                StartSineTest
+                0x00001658       0x30 MP3Decoder/vs1011.o
+                0x00001658                StartSineTest
  .text.VolumePlus
-                0x00001686       0x22 MP3Decoder/vs1011.o
-                0x00001686                VolumePlus
+                0x00001688       0x22 MP3Decoder/vs1011.o
+                0x00001688                VolumePlus
  .text.VolumeMinus
-                0x000016a8       0x26 MP3Decoder/vs1011.o
-                0x000016a8                VolumeMinus
+                0x000016aa       0x26 MP3Decoder/vs1011.o
+                0x000016aa                VolumeMinus
  .text.init_spi
-                0x000016ce       0x14 spi.o
-                0x000016ce                init_spi
+                0x000016d0       0x12 spi.o
+                0x000016d0                init_spi
  .text.xmit_spi
                 0x000016e2        0xa spi.o
                 0x000016e2                xmit_spi

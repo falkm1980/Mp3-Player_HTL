@@ -14,8 +14,8 @@
 //#define KEY_BACK	PD0
 //#define KEY_PLAY	PD1
 #define KEY_BACK	PD2
-#define KEY_PLAY	PC2
-#define KEY_FORWARD	PC7
+#define KEY_PLAY	PD3
+#define KEY_FORWARD	PD4
 
 #define BACK			1
 #define PLAY			2
@@ -49,7 +49,7 @@ void InitUART()
 	UCSR0B = (1 << TXEN0) | (1 << RXEN0);// | (1 << RXCIE0);
 	UCSR0C = (1 << UCSZ00) | (1 << UCSZ01);
 	
-	UBRR0 = 51;	// Bluetooth module has 19200 baud, 25 = value @16MHz clock for 19200
+	UBRR0 = 51;	// Bluetooth module has 19200 baud, 51 = value @16MHz clock for 19200
 }
 
 /*
@@ -121,10 +121,10 @@ uint8_t ReadSerialByte()
 
 uint8_t GetKey()
 {
-	uint8_t serialData = 0x00;
-	serialData = ReadSerialByte();
-	if (serialData != 0x00)
-		return serialData;
+	//uint8_t serialData = 0x00;
+	//serialData = ReadSerialByte();
+	//if (serialData != 0x00)
+		//return serialData;
 	
 	uint8_t portD = PIND;
 	if (portD == iLastValue)
@@ -132,7 +132,7 @@ uint8_t GetKey()
 	
 	iLastValue = portD;
 	
-	if (iPlayDown && (portD & 0x40))
+	if (iPlayDown && (portD & 0x08))
 	{
 		iPlayDown = 0;
 		if (iVolumePressed != 0)
@@ -147,26 +147,26 @@ uint8_t GetKey()
 	// check Volume
 	if (iPlayDown)
 	{
-		if ((portD & 0x20) == 0x00)
+		if ((portD & 0x04) == 0x00)
 		{
 			iVolumePressed = 1;
 			return 5;
 		}
 		
-		if ((portD & 0x80) == 0x00)
+		if ((portD & 0x10) == 0x00)
 		{
 			iVolumePressed = 1;
 			return 4;
 		}
 	}
 
-	if (iBackDown && (portD & 0x20))
+	if (iBackDown && (portD & 0x04))
 	{
 		iBackDown = 0;
 		return 1;
 	}	
 
-	if (iForwardDown && (portD & 0x80))
+	if (iForwardDown && (portD & 0x10))
 	{
 		iForwardDown = 0;
 		return 3;
@@ -174,7 +174,7 @@ uint8_t GetKey()
 	
 	
 	
-	if ((portD & 0x20) == 0x00)
+	if ((portD & 0x04) == 0x00)
 	{
 		if (!iBackDown)
 		{
@@ -183,7 +183,7 @@ uint8_t GetKey()
 		}
 	}
 		
-	if ((portD & 0x40) == 0x00)
+	if ((portD & 0x08) == 0x00)
 	{
 		if (!iPlayDown)
 		{
@@ -191,7 +191,7 @@ uint8_t GetKey()
 			return 0;
 		}
 	}
-	if ((portD & 0x80) == 0x00)
+	if ((portD & 0x10) == 0x00)
 	{
 		if (!iForwardDown)
 		{
@@ -203,84 +203,6 @@ uint8_t GetKey()
 	return 0;
 }
 
-//uint8_t GetKey_OrigBelegung()
-//{
-	//uint8_t portD = PIND;
-	//if (portD == iLastValue)
-	//return 0;
-	//
-	//iLastValue = portD;
-	//
-	//if (iPlayDown && (portD & 0x02))
-	//{
-		//iPlayDown = 0;
-		//if (iVolumePressed != 0)
-		//{
-			//iVolumePressed = 0;
-			//return 0;
-		//}
-		//
-		//return 2;
-	//}
-//
-	//// check Volume
-	//if (iPlayDown)
-	//{
-		//if ((portD & 0x01) == 0x00)
-		//{
-			//iVolumePressed = 1;
-			//return 5;
-		//}
-		//
-		//if ((portD & 0x04) == 0x00)
-		//{
-			//iVolumePressed = 1;
-			//return 4;
-		//}
-	//}
-//
-	//if (iBackDown && (portD & 0x01))
-	//{
-		//iBackDown = 0;
-		//return 1;
-	//}
-//
-	//if (iForwardDown && (portD & 0x04))
-	//{
-		//iForwardDown = 0;
-		//return 3;
-	//}
-	//
-	//
-	//
-	//if ((portD & 0x01) == 0x00)
-	//{
-		//if (!iBackDown)
-		//{
-			//iBackDown = 1;
-			//return 0;
-		//}
-	//}
-	//
-	//if ((portD & 0x02) == 0x00)
-	//{
-		//if (!iPlayDown)
-		//{
-			//iPlayDown = 1;
-			//return 0;
-		//}
-	//}
-	//if ((portD & 0x04) == 0x00)
-	//{
-		//if (!iForwardDown)
-		//{
-			//iForwardDown = 1;
-			//return 0;
-		//}
-	//}
-	//
-	//return 0;
-//}
 
 uint8_t GetNumberFiles()
 {
@@ -423,12 +345,21 @@ uint8_t PlayFile(uint8_t numFile2Play)
 int main(void)
 {
 	_delay_ms(10);
-//	DDRD = 0xF8;
-	DDRD = 0x18;
+
+	DDRD = 0x22; // PD5 is the output for the power switch
 	PORTD = 0xFF;	// all pins high + enable the pull up resistors for the 3 Keys (PD0..PD2)
 
 	
-	DDRC = 0xFF; // PORTC is used for the HW_Reset;
+	DDRC = 0b00101001;
+	// PC0 -> XDCS (Out)
+	// PC1 -> DREQ (In)
+	// PC2 -> 
+	// PC3 -> XRESET (Out)
+	// PC4 -> SDA (??)
+	// PC5 -> SCL (??)
+	// PC6 -> 
+	// PC7 ->
+
 	PORTC = 0xFF;
 	_delay_ms(50);
 	

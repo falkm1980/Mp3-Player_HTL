@@ -11,9 +11,15 @@
 void init_spi (void)
 {
 
-	DDRB = (1<<PB0) | (1<<PB2) | (1<<PB3) |(1<<PB5);	// this is for the MP3-Chip
-	
-	DDRD |= (1<<PD4);	// CS Card
+	DDRB = (1<<PB1) | (1<<PB2) | (1<<PB3) |(1<<PB5);	// this is for the MP3-Chip
+	// PB0 -> NC
+	// PB1 -> CS SD-Card (Out)
+	// PB2 -> XCS (Out)
+	// PB3 -> MOSI (Out)
+	// PB4 -> MISO (In)
+	// PB5 -> SCK (Out)
+
+//	DDRD |= (1<<PD4);	// CS Card
 	
 	PORTB = ~((1<<PB4));
 	

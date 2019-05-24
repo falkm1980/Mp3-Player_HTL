@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/repos/avfs/!svn/ver/514/elektronik/MP3-Player/firmware/Mp3-Player/MMC
+END
+pff.h
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/repos/avfs/!svn/ver/406/elektronik/MP3-Player/firmware/Mp3-Player/MMC/pff.h
+END
+usi.S
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/repos/avfs/!svn/ver/406/elektronik/MP3-Player/firmware/Mp3-Player/MMC/usi.S
+END
+diskio.h
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/repos/avfs/!svn/ver/406/elektronik/MP3-Player/firmware/Mp3-Player/MMC/diskio.h
+END
+pff.c
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/repos/avfs/!svn/ver/406/elektronik/MP3-Player/firmware/Mp3-Player/MMC/pff.c
+END
+mmc.c
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/repos/avfs/!svn/ver/514/elektronik/MP3-Player/firmware/Mp3-Player/MMC/mmc.c
+END

@@ -1,0 +1,19 @@
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Atmel Studio Solution File, Format Version 11.00
+Project("{D1100916-62DA-4D80-A9B4-55A1E7CCEEB3}") = "Mp3-Player", "Mp3-Player_6_0.cproj", "{D33C7ABF-987F-4329-8A3A-AC41374E0071}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|AVR = Debug|AVR
+		Release|AVR = Release|AVR
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D33C7ABF-987F-4329-8A3A-AC41374E0071}.Debug|AVR.ActiveCfg = Debug|AVR
+		{D33C7ABF-987F-4329-8A3A-AC41374E0071}.Debug|AVR.Build.0 = Debug|AVR
+		{D33C7ABF-987F-4329-8A3A-AC41374E0071}.Release|AVR.ActiveCfg = Release|AVR
+		{D33C7ABF-987F-4329-8A3A-AC41374E0071}.Release|AVR.Build.0 = Release|AVR
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

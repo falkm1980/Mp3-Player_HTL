@@ -1,0 +1,77 @@
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/repos/avfs/!svn/ver/538/elektronik/MP3-Player/firmware/Mp3-Player
+END
+spi.h
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/repos/avfs/!svn/ver/406/elektronik/MP3-Player/firmware/Mp3-Player/spi.h
+END
+LCD.c
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/repos/avfs/!svn/ver/408/elektronik/MP3-Player/firmware/Mp3-Player/LCD.c
+END
+integer.h
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/repos/avfs/!svn/ver/406/elektronik/MP3-Player/firmware/Mp3-Player/integer.h
+END
+Mp3-Player.atsuo
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/repos/avfs/!svn/ver/538/elektronik/MP3-Player/firmware/Mp3-Player/Mp3-Player.atsuo
+END
+Mp3-Player.cproj
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/repos/avfs/!svn/ver/527/elektronik/MP3-Player/firmware/Mp3-Player/Mp3-Player.cproj
+END
+Mp3-Player.avrsuo
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/repos/avfs/!svn/ver/412/elektronik/MP3-Player/firmware/Mp3-Player/Mp3-Player.avrsuo
+END
+Mp3-Player.avrgccproj
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/repos/avfs/!svn/ver/412/elektronik/MP3-Player/firmware/Mp3-Player/Mp3-Player.avrgccproj
+END
+lcd.h
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/repos/avfs/!svn/ver/408/elektronik/MP3-Player/firmware/Mp3-Player/lcd.h
+END
+Mp3-Player.atsln
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/repos/avfs/!svn/ver/513/elektronik/MP3-Player/firmware/Mp3-Player/Mp3-Player.atsln
+END
+Mp3-Player.c
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/repos/avfs/!svn/ver/527/elektronik/MP3-Player/firmware/Mp3-Player/Mp3-Player.c
+END
+spi.c
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/repos/avfs/!svn/ver/517/elektronik/MP3-Player/firmware/Mp3-Player/spi.c
+END
+Mp3-Player.avrsln
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/repos/avfs/!svn/ver/406/elektronik/MP3-Player/firmware/Mp3-Player/Mp3-Player.avrsln
+END

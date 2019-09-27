@@ -1,0 +1,394 @@
+/*
+* Mp3_Player.c
+*
+* Created: 11.12.2011 21:18:14
+*  Author: Markus
+*/
+#define F_CPU 8000000UL
+#include <avr/io.h>
+#include "lcd.h"
+#include <util/delay.h>
+#include "MMC/pff.h"
+#include "MP3Decoder/vs1011.h"
+#include "i2cmaster.h"
+
+#define KEY_BACK	PD0
+#define KEY_PLAY	PD1
+#define KEY_FORWARD	PD2
+
+#define BACK	1
+#define PLAY	2
+#define FORWARD 3
+
+void Test()
+{
+	
+}
+
+void InitKeyboard()
+{
+	DDRD = ~((1<<KEY_PLAY) | (1<<KEY_BACK) | (1<<KEY_FORWARD));// | (1<<PD2));
+	// the CS for the card is also in PORTD but this PIN is initialized in spi.c->init_spi
+	// therefore it is important that InitKeyboard is called before init_spi
+}
+
+void TestMP3()
+{
+	_delay_ms(5);
+
+	StartSineTest();
+
+	_delay_ms(500);
+	loop_until_bit_is_set(PIND, PD0);
+	
+	StopSineTest();
+	
+	while(1)
+	{
+	}
+}
+
+void InitDebugPin()
+{
+	DDRB |= (1<<PB0);	
+}
+
+void ToggleDebugPin()
+{
+	PORTB |= 0x01;
+	PORTB &= 0xFE;	
+}
+
+void TestX()
+{
+	DDRC = 0xFF;
+	while(1)
+	{
+		PORTC = 0x07;
+		_delay_ms(1);
+		PORTC = 0x00;
+		_delay_ms(1);
+	}	
+}
+
+uint8_t GetKey()
+{
+	
+	uint8_t portD = PIND;
+	
+	if ((portD & 0x01) == 0x00)
+		return 1;
+		
+	if ((portD & 0x02) == 0x00)
+		return 2;
+
+	if ((portD & 0x04) == 0x00)
+		return 3;
+		
+	return 0;	
+}
+
+uint8_t GetNumberFiles()
+{
+	DIR dir;
+	char* path = "";
+	BYTE res = 0;
+	res = pf_opendir(&dir, path);
+	uint8_t numFiles = 0;
+	
+	if (res == FR_OK)
+	{
+		while (1)
+		{
+			FILINFO fno;
+			res = pf_readdir(&dir, &fno);
+			if (res != FR_OK || fno.fname[0] == 0)
+			{
+				break;
+			}
+			numFiles++;
+		}
+	}
+
+	return numFiles;	
+}
+
+uint8_t PlayFile(uint8_t numFile2Play)
+{
+	BYTE res = 0;
+
+	DIR dir;
+	char* path = "";
+	res = pf_opendir(&dir, path);
+	FILINFO fno;
+	
+	if (res == FR_OK)
+	{
+		uint8_t index = 0;
+		do
+		{
+			res = pf_readdir(&dir, &fno);
+			if (res != FR_OK || fno.fname[0] == 0)
+			{
+				break;
+			}
+			
+			index++;
+		} while(index < numFile2Play);
+	}
+	else
+	{
+		return 0;
+	}
+	
+	SoftwareReset();	// resets the MP3-Chip
+	
+	res = pf_open(fno.fname);
+	if (res)
+	{
+		StartSineTest();
+		_delay_ms(2000);
+		return 0;
+	}
+
+	const WORD sizeBlock = 512;
+	BYTE buff[sizeBlock];
+	WORD br=0;
+	
+	while(1)
+	{
+		res = pf_read(buff, sizeBlock, &br);    // Read data to the buff[]
+		if (res != 0)
+		{
+			break;
+		}
+		else
+		{
+							
+			if (br == 0)
+			{
+				break;
+			}
+							
+			uint16_t bytesWritten = 0;
+			do
+			{
+				uint16_t bytes2Write = 0;
+				if ((br - bytesWritten) > 32)
+					bytes2Write = 32;
+				else
+					bytes2Write = br - bytesWritten;
+								
+				for(int i=0; i<32; i++)
+				{
+					WriteMP3DataByte(buff[bytesWritten+i]);
+				}
+								
+				bytesWritten += bytes2Write;
+				
+				loop_until_bit_is_set(PINB, PB1);
+				switch(GetKey())
+				{
+					case BACK:
+						_delay_ms(100);
+						return 1;
+					case PLAY:
+						_delay_ms(100);
+						return 2;
+					case FORWARD:
+						_delay_ms(100);
+						return 3;	
+				}
+			} while (bytesWritten < br);
+			
+			if (br < sizeBlock)
+			{
+				_delay_ms(100);
+				return 0;
+			}
+		}
+	}
+	
+	return 0;	
+}
+
+int mainNew(void)
+{
+	_delay_ms(10);
+	
+	DDRC = 0xFF; // PORTC is used for the HW_Reset;
+	PORTC = 0xFF;
+	_delay_ms(50);
+
+	InitKeyboard();
+	
+	BYTE res = 0;
+	FATFS fs;			/* File system object */
+	FRESULT fResult = -1;
+	
+
+	res = disk_initialize(); // this also init's the SPI-Interface
+
+	_delay_ms(10);
+	HardwareReset();
+	
+	InitVS1011e();
+	_delay_ms(5);
+
+	fResult = pf_mount(&fs);
+	
+	if (fResult == 0)
+	{
+		
+	}
+}
+
+void DebugTest()
+{
+	while(1)
+	{
+		loop_until_bit_is_set(PIND, PD0);
+	
+		WriteDebugByte(0x00, 0xAA);
+		_delay_ms(10);
+		WriteDebugByte(0x10, 0x20);
+		_delay_ms(20);
+		WriteDebugByte(0x30, 0x50);
+		_delay_ms(1000);
+	}
+}
+
+void InitI2C()
+{
+	unsigned char ret;
+	i2c_init();
+}
+
+void WriteI2CByte(uint8_t byte)
+{
+	unsigned char ret;
+	PORTD &= ~_BV(3);
+	ret = i2c_start(byte);       // set device address and write mode
+	i2c_stop();
+	
+	PORTD |= _BV(3);
+}
+
+
+void TestFileSys()
+{
+	DIR dir;
+	char* path = "";
+	BYTE res = 0;
+	res = pf_opendir(&dir, path);
+	WriteI2CByte(res);
+	uint8_t num = 0;
+	
+	if (res == FR_OK)
+	{
+		while (1)
+		{
+			FILINFO fno;
+			res = pf_readdir(&dir, &fno);
+			if (res != FR_OK || fno.fname[0] == 0)
+			{
+				WriteI2CByte(0xFE);
+				break;
+			}
+			num++;
+			WriteI2CByte(0x10 | num);
+			
+		}		
+	}
+	
+	WriteI2CByte(0x10 | num);
+	WriteI2CByte(0xFF);
+	while(1)
+	{
+		
+	}
+}
+
+
+int main(void)
+{
+	_delay_ms(10);
+	DDRD = 0xF8;
+	PORTD = 0xFF;	// all pins high + enable the pull up resistors for the 3 Keys (PD0..PD2)
+
+	
+    DDRC = 0xFF; // PORTC is used for the HW_Reset;
+	PORTC = 0xFF;
+	_delay_ms(50);
+	
+	
+	loop_until_bit_is_set(PIND, PD0);
+		
+	InitKeyboard();
+	PORTD |= 0x07;	// enable the pull up resistors for the 3 Keys
+	
+	BYTE res = 0;
+	FATFS fs;			/* File system object */
+	FRESULT fResult = -1;
+	
+
+	res = disk_initialize(); // this also init's the SPI-Interface
+	
+	_delay_ms(10);
+	HardwareReset();
+
+	InitVS1011e();
+	_delay_ms(5);
+	
+	_delay_ms(500);
+
+	fResult = pf_mount(&fs);
+	if (fResult == 0)
+	{
+		uint8_t numFiles = GetNumberFiles();
+		uint8_t file2Play = 1;
+	
+		while(1)
+		{
+			uint8_t ret = PlayFile(file2Play);
+			switch(ret)
+			{
+				case BACK:
+					file2Play--;
+					if (file2Play < 1)
+						file2Play = numFiles;
+					break;
+				case PLAY:
+					_delay_ms(500);
+					while(GetKey() != PLAY)
+					{
+					}
+					break;
+				case FORWARD:
+					file2Play++;
+					if (file2Play > numFiles)
+						file2Play = 1;
+					break;
+				default:
+					file2Play++;
+					if (file2Play > numFiles)
+						file2Play = 1;
+					break;
+			}
+		}
+	}
+	else
+	{
+		pf_mount(0);
+
+		while(1)
+		{
+		}
+	}
+	
+	_delay_ms(2000);
+	
+    while(1)
+    {
+    }
+}

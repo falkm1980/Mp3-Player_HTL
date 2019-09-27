@@ -1,0 +1,65 @@
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/repos/avfs/!svn/ver/537/elektronik/MP3-Player/firmware/Mp3-Player/Release
+END
+Mp3-Player.eep
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/repos/avfs/!svn/ver/406/elektronik/MP3-Player/firmware/Mp3-Player/Release/Mp3-Player.eep
+END
+LCD.d
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/repos/avfs/!svn/ver/508/elektronik/MP3-Player/firmware/Mp3-Player/Release/LCD.d
+END
+Mp3-Player.map
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/repos/avfs/!svn/ver/527/elektronik/MP3-Player/firmware/Mp3-Player/Release/Mp3-Player.map
+END
+Mp3-Player.lss
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/repos/avfs/!svn/ver/527/elektronik/MP3-Player/firmware/Mp3-Player/Release/Mp3-Player.lss
+END
+Mp3-Player.d
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/repos/avfs/!svn/ver/527/elektronik/MP3-Player/firmware/Mp3-Player/Release/Mp3-Player.d
+END
+Mp3-Player.hex
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/repos/avfs/!svn/ver/527/elektronik/MP3-Player/firmware/Mp3-Player/Release/Mp3-Player.hex
+END
+makedep.mk
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/repos/avfs/!svn/ver/527/elektronik/MP3-Player/firmware/Mp3-Player/Release/makedep.mk
+END
+Makefile
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/repos/avfs/!svn/ver/527/elektronik/MP3-Player/firmware/Mp3-Player/Release/Makefile
+END
+spi.d
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/repos/avfs/!svn/ver/508/elektronik/MP3-Player/firmware/Mp3-Player/Release/spi.d
+END
+Mp3-Player.elf
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/repos/avfs/!svn/ver/527/elektronik/MP3-Player/firmware/Mp3-Player/Release/Mp3-Player.elf
+END

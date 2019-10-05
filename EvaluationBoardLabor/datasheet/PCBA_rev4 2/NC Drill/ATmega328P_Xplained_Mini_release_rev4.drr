@@ -1,0 +1,21 @@
+---------------------------------------------------------------------------
+NCDrill File Report For: ATmega328P_Xplained_Mini.PcbDoc   5/5/2014  8:11:01 PM
+---------------------------------------------------------------------------
+
+Layer Pair : Top Layer to Bottom Layer
+ASCII RoundHoles File : ATmega328P_Xplained_Mini-RoundHoles.TXT
+ASCII SlotHoles File : ATmega328P_Xplained_Mini-SlotHoles.TXT
+EIA File   : ATmega328P_Xplained_Mini.DRL
+
+Tool         Hole Size           Hole Type     Hole Count Plated       Tool Travel
+---------------------------------------------------------------------------
+T1        9.8mil (0.24892mm)       Round          121              14.97 Inch (380.19 mm)
+T2        25.6mil (0.65024mm)      Round          10               0.45 Inch (11.43 mm)
+T3        25.6mil (0.65024mm)      Slot           2                285.76 Inch (7258.31 mm)
+T4        32.5mil (0.8255mm)       Slot           2                285.90 Inch (7261.85 mm)
+T5        39.4mil (1.00076mm)      Round          267              34.04 Inch (864.71 mm)
+T6        106.3mil (2.70002mm)     Round          4                7.43 Inch (188.81 mm)
+---------------------------------------------------------------------------
+Totals                                            406              628.55 Inch (15965.29 mm)
+
+Total Processing Time (hh:mm:ss) : 00:00:00

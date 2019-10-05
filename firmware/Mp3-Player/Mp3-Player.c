@@ -4,7 +4,7 @@
 * Created: 11.12.2011 21:18:14
 *  Author: Markus
 */
-#define F_CPU 8000000UL
+#define F_CPU 16000000UL
 #include <avr/io.h>
 #include "lcd.h"
 #include <util/delay.h>

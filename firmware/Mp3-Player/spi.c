@@ -19,7 +19,7 @@ void init_spi (void)
 	// PB4 -> MISO (In)
 	// PB5 -> SCK (Out)
 
-//	DDRD |= (1<<PD4);	// CS Card
+	DDRD |= (1<<PD4);	// CS Card
 	
 	PORTB = ~((1<<PB4));
 	

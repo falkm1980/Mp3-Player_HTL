@@ -1,0 +1,3 @@
+Record=TopLevelDocument|FileName=ATmega328P_Xplained_Mini_TopLevel.SchDoc
+Record=SheetSymbol|SourceDocument=ATmega328P_Xplained_Mini_TopLevel.SchDoc|Designator=Programmer/Debug|SchDesignator=Programmer/Debug|FileName=ATmega328P_Xplained_Mini_Programmer.SchDoc|SymbolType=Normal|RawFileName=ATmega328P_Xplained_Mini_Programmer.SchDoc|DesignItemId= |SourceLibraryName= |ObjectKind=Sheet Symbol|RevisionGUID= |ItemGUID= |VaultGUID= 
+Record=SheetSymbol|SourceDocument=ATmega328P_Xplained_Mini_TopLevel.SchDoc|Designator=Target device|SchDesignator=Target device|FileName=ATmega328P_Xplained_Mini_Target.SchDoc|SymbolType=Normal|RawFileName=ATmega328P_Xplained_Mini_Target.SchDoc|DesignItemId= |SourceLibraryName= |ObjectKind=Sheet Symbol|RevisionGUID= |ItemGUID= |VaultGUID= 

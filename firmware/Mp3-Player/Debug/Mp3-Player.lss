@@ -19,15 +19,15 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING
   7 .debug_abbrev 00000da3  00000000  00000000  000075fb  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_line   0000256f  00000000  00000000  0000839e  2**0
+  8 .debug_line   00002456  00000000  00000000  0000839e  2**0
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_frame  00000728  00000000  00000000  0000a910  2**2
+  9 .debug_frame  00000728  00000000  00000000  0000a7f4  2**2
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_str    0000089e  00000000  00000000  0000b038  2**0
+ 10 .debug_str    0000089e  00000000  00000000  0000af1c  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_loc    00000efb  00000000  00000000  0000b8d6  2**0
+ 11 .debug_loc    00000efb  00000000  00000000  0000b7ba  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_ranges 00000238  00000000  00000000  0000c7d1  2**0
+ 12 .debug_ranges 00000238  00000000  00000000  0000c6b5  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -590,7 +590,7 @@ DSTATUS disk_initialize (void)
      3e2:	88 70       	andi	r24, 0x08	; 8
      3e4:	99 27       	eor	r25, r25
      3e6:	89 2b       	or	r24, r25
-     3e8:	89 f4       	brne	.+34     	; 0x40c <__LOCK_REGION_LENGTH__+0xc>
+     3e8:	89 f4       	brne	.+34     	; 0x40c <__EEPROM_REGION_LENGTH__+0xc>
      3ea:	8f 81       	ldd	r24, Y+7	; 0x07
      3ec:	98 85       	ldd	r25, Y+8	; 0x08
      3ee:	a9 85       	ldd	r26, Y+9	; 0x09
@@ -622,8 +622,8 @@ DSTATUS disk_initialize (void)
      41c:	81 e5       	ldi	r24, 0x51	; 81
      41e:	0e 94 53 00 	call	0xa6	; 0xa6 <send_cmd>
      422:	88 23       	and	r24, r24
-     424:	09 f0       	breq	.+2      	; 0x428 <__LOCK_REGION_LENGTH__+0x28>
-     426:	63 c0       	rjmp	.+198    	; 0x4ee <__LOCK_REGION_LENGTH__+0xee>
+     424:	09 f0       	breq	.+2      	; 0x428 <__EEPROM_REGION_LENGTH__+0x28>
+     426:	63 c0       	rjmp	.+198    	; 0x4ee <__EEPROM_REGION_LENGTH__+0xee>
 
 		bc = 40000;
      428:	80 e4       	ldi	r24, 0x40	; 64
@@ -637,7 +637,7 @@ DSTATUS disk_initialize (void)
 		} while (rc == 0xFF && --bc);
      436:	8c 81       	ldd	r24, Y+4	; 0x04
      438:	8f 3f       	cpi	r24, 0xFF	; 255
-     43a:	49 f4       	brne	.+18     	; 0x44e <__LOCK_REGION_LENGTH__+0x4e>
+     43a:	49 f4       	brne	.+18     	; 0x44e <__EEPROM_REGION_LENGTH__+0x4e>
      43c:	8a 81       	ldd	r24, Y+2	; 0x02
      43e:	9b 81       	ldd	r25, Y+3	; 0x03
      440:	01 97       	sbiw	r24, 0x01	; 1
@@ -646,13 +646,13 @@ DSTATUS disk_initialize (void)
      446:	8a 81       	ldd	r24, Y+2	; 0x02
      448:	9b 81       	ldd	r25, Y+3	; 0x03
      44a:	89 2b       	or	r24, r25
-     44c:	89 f7       	brne	.-30     	; 0x430 <__LOCK_REGION_LENGTH__+0x30>
+     44c:	89 f7       	brne	.-30     	; 0x430 <__EEPROM_REGION_LENGTH__+0x30>
 
 		if (rc == 0xFE) {				/* A data packet arrived */
      44e:	8c 81       	ldd	r24, Y+4	; 0x04
      450:	8e 3f       	cpi	r24, 0xFE	; 254
-     452:	09 f0       	breq	.+2      	; 0x456 <__LOCK_REGION_LENGTH__+0x56>
-     454:	4c c0       	rjmp	.+152    	; 0x4ee <__LOCK_REGION_LENGTH__+0xee>
+     452:	09 f0       	breq	.+2      	; 0x456 <__EEPROM_REGION_LENGTH__+0x56>
+     454:	4c c0       	rjmp	.+152    	; 0x4ee <__EEPROM_REGION_LENGTH__+0xee>
 			bc = 514 - ofs - cnt;
      456:	8b 85       	ldd	r24, Y+11	; 0x0b
      458:	9c 85       	ldd	r25, Y+12	; 0x0c
@@ -676,7 +676,7 @@ DSTATUS disk_initialize (void)
      476:	8b 85       	ldd	r24, Y+11	; 0x0b
      478:	9c 85       	ldd	r25, Y+12	; 0x0c
      47a:	89 2b       	or	r24, r25
-     47c:	59 f0       	breq	.+22     	; 0x494 <__LOCK_REGION_LENGTH__+0x94>
+     47c:	59 f0       	breq	.+22     	; 0x494 <__EEPROM_REGION_LENGTH__+0x94>
 				do rcv_spi(); while (--ofs);
      47e:	0e 94 e0 1e 	call	0x3dc0	; 0x3dc0 <rcv_spi>
      482:	8b 85       	ldd	r24, Y+11	; 0x0b
@@ -687,7 +687,7 @@ DSTATUS disk_initialize (void)
      48c:	8b 85       	ldd	r24, Y+11	; 0x0b
      48e:	9c 85       	ldd	r25, Y+12	; 0x0c
      490:	89 2b       	or	r24, r25
-     492:	a9 f7       	brne	.-22     	; 0x47e <__LOCK_REGION_LENGTH__+0x7e>
+     492:	a9 f7       	brne	.-22     	; 0x47e <__EEPROM_REGION_LENGTH__+0x7e>
 			}
 
 			/* Receive a part of the sector */
@@ -695,7 +695,7 @@ DSTATUS disk_initialize (void)
      494:	8d 81       	ldd	r24, Y+5	; 0x05
      496:	9e 81       	ldd	r25, Y+6	; 0x06
      498:	89 2b       	or	r24, r25
-     49a:	a1 f0       	breq	.+40     	; 0x4c4 <__LOCK_REGION_LENGTH__+0xc4>
+     49a:	a1 f0       	breq	.+40     	; 0x4c4 <__EEPROM_REGION_LENGTH__+0xc4>
 				do {
 					*buff++ = rcv_spi();
      49c:	0d 81       	ldd	r16, Y+5	; 0x05
@@ -716,8 +716,8 @@ DSTATUS disk_initialize (void)
      4ba:	8d 85       	ldd	r24, Y+13	; 0x0d
      4bc:	9e 85       	ldd	r25, Y+14	; 0x0e
      4be:	89 2b       	or	r24, r25
-     4c0:	69 f7       	brne	.-38     	; 0x49c <__LOCK_REGION_LENGTH__+0x9c>
-     4c2:	09 c0       	rjmp	.+18     	; 0x4d6 <__LOCK_REGION_LENGTH__+0xd6>
+     4c0:	69 f7       	brne	.-38     	; 0x49c <__EEPROM_REGION_LENGTH__+0x9c>
+     4c2:	09 c0       	rjmp	.+18     	; 0x4d6 <__EEPROM_REGION_LENGTH__+0xd6>
 			} else {	/* Forward data to the outgoing stream (depends on the project) */
 				do {
 			//		FORWARD(rcv_spi());
@@ -730,7 +730,7 @@ DSTATUS disk_initialize (void)
      4ce:	8d 85       	ldd	r24, Y+13	; 0x0d
      4d0:	9e 85       	ldd	r25, Y+14	; 0x0e
      4d2:	89 2b       	or	r24, r25
-     4d4:	b9 f7       	brne	.-18     	; 0x4c4 <__LOCK_REGION_LENGTH__+0xc4>
+     4d4:	b9 f7       	brne	.-18     	; 0x4c4 <__EEPROM_REGION_LENGTH__+0xc4>
 			}
 
 			/* Skip trailing bytes and CRC */
@@ -744,7 +744,7 @@ DSTATUS disk_initialize (void)
      4e4:	8a 81       	ldd	r24, Y+2	; 0x02
      4e6:	9b 81       	ldd	r25, Y+3	; 0x03
      4e8:	89 2b       	or	r24, r25
-     4ea:	a9 f7       	brne	.-22     	; 0x4d6 <__LOCK_REGION_LENGTH__+0xd6>
+     4ea:	a9 f7       	brne	.-22     	; 0x4d6 <__EEPROM_REGION_LENGTH__+0xd6>
 
 			res = RES_OK;
      4ec:	19 82       	std	Y+1, r1	; 0x01
@@ -1174,7 +1174,7 @@ fe_abort:
      7dc:	02 97       	sbiw	r24, 0x02	; 2
      7de:	a1 05       	cpc	r26, r1
      7e0:	b1 05       	cpc	r27, r1
-     7e2:	80 f0       	brcs	.+32     	; 0x804 <get_fat+0x5c>
+     7e2:	80 f0       	brcs	.+32     	; 0x804 <__DATA_REGION_LENGTH__+0x4>
      7e4:	89 81       	ldd	r24, Y+1	; 0x01
      7e6:	9a 81       	ldd	r25, Y+2	; 0x02
      7e8:	fc 01       	movw	r30, r24
@@ -1190,7 +1190,7 @@ fe_abort:
      7fc:	93 07       	cpc	r25, r19
      7fe:	a4 07       	cpc	r26, r20
      800:	b5 07       	cpc	r27, r21
-     802:	28 f0       	brcs	.+10     	; 0x80e <get_fat+0x66>
+     802:	28 f0       	brcs	.+10     	; 0x80e <__DATA_REGION_LENGTH__+0xe>
      804:	81 e0       	ldi	r24, 0x01	; 1
      806:	90 e0       	ldi	r25, 0x00	; 0
      808:	a0 e0       	ldi	r26, 0x00	; 0
@@ -1204,14 +1204,14 @@ fe_abort:
      818:	90 e0       	ldi	r25, 0x00	; 0
      81a:	82 30       	cpi	r24, 0x02	; 2
      81c:	91 05       	cpc	r25, r1
-     81e:	09 f4       	brne	.+2      	; 0x822 <get_fat+0x7a>
+     81e:	09 f4       	brne	.+2      	; 0x822 <__DATA_REGION_LENGTH__+0x22>
      820:	ad c0       	rjmp	.+346    	; 0x97c <__stack+0x7d>
      822:	83 30       	cpi	r24, 0x03	; 3
      824:	91 05       	cpc	r25, r1
-     826:	09 f4       	brne	.+2      	; 0x82a <get_fat+0x82>
+     826:	09 f4       	brne	.+2      	; 0x82a <__DATA_REGION_LENGTH__+0x2a>
      828:	d8 c0       	rjmp	.+432    	; 0x9da <__stack+0xdb>
      82a:	01 97       	sbiw	r24, 0x01	; 1
-     82c:	09 f0       	breq	.+2      	; 0x830 <get_fat+0x88>
+     82c:	09 f0       	breq	.+2      	; 0x830 <__DATA_REGION_LENGTH__+0x30>
      82e:	11 c1       	rjmp	.+546    	; 0xa52 <__stack+0x153>
      830:	8d 85       	ldd	r24, Y+13	; 0x0d
      832:	9e 85       	ldd	r25, Y+14	; 0x0e
@@ -1243,7 +1243,7 @@ fe_abort:
      866:	9e 81       	ldd	r25, Y+6	; 0x06
      868:	8f 3f       	cpi	r24, 0xFF	; 255
      86a:	91 40       	sbci	r25, 0x01	; 1
-     86c:	f9 f0       	breq	.+62     	; 0x8ac <get_fat+0x104>
+     86c:	f9 f0       	breq	.+62     	; 0x8ac <__DATA_REGION_LENGTH__+0xac>
      86e:	89 81       	ldd	r24, Y+1	; 0x01
      870:	9a 81       	ldd	r25, Y+2	; 0x02
      872:	fc 01       	movw	r30, r24
@@ -1271,7 +1271,7 @@ fe_abort:
      89e:	cf 01       	movw	r24, r30
      8a0:	0e 94 d7 01 	call	0x3ae	; 0x3ae <disk_readp>
      8a4:	88 23       	and	r24, r24
-     8a6:	09 f4       	brne	.+2      	; 0x8aa <get_fat+0x102>
+     8a6:	09 f4       	brne	.+2      	; 0x8aa <__DATA_REGION_LENGTH__+0xaa>
      8a8:	41 c0       	rjmp	.+130    	; 0x92c <__stack+0x2d>
      8aa:	d3 c0       	rjmp	.+422    	; 0xa52 <__stack+0x153>
      8ac:	89 81       	ldd	r24, Y+1	; 0x01
@@ -1301,7 +1301,7 @@ fe_abort:
      8dc:	cf 01       	movw	r24, r30
      8de:	0e 94 d7 01 	call	0x3ae	; 0x3ae <disk_readp>
      8e2:	88 23       	and	r24, r24
-     8e4:	09 f0       	breq	.+2      	; 0x8e8 <get_fat+0x140>
+     8e4:	09 f0       	breq	.+2      	; 0x8e8 <__DATA_REGION_LENGTH__+0xe8>
      8e6:	ae c0       	rjmp	.+348    	; 0xa44 <__stack+0x145>
      8e8:	89 81       	ldd	r24, Y+1	; 0x01
      8ea:	9a 81       	ldd	r25, Y+2	; 0x02
@@ -4209,7 +4209,7 @@ uint8_t GetKey()
     1f1a:	80 81       	ld	r24, Z
     1f1c:	89 83       	std	Y+1, r24	; 0x01
 	if (portD == iLastValue)
-    1f1e:	80 91 00 01 	lds	r24, 0x0100	; 0x800100 <__data_start>
+    1f1e:	80 91 00 01 	lds	r24, 0x0100	; 0x800100 <__DATA_REGION_ORIGIN__>
     1f22:	99 81       	ldd	r25, Y+1	; 0x01
     1f24:	98 17       	cp	r25, r24
     1f26:	11 f4       	brne	.+4      	; 0x1f2c <GetKey+0x22>
@@ -4219,7 +4219,7 @@ uint8_t GetKey()
 	
 	iLastValue = portD;
     1f2c:	89 81       	ldd	r24, Y+1	; 0x01
-    1f2e:	80 93 00 01 	sts	0x0100, r24	; 0x800100 <__data_start>
+    1f2e:	80 93 00 01 	sts	0x0100, r24	; 0x800100 <__DATA_REGION_ORIGIN__>
 	
 	if (iPlayDown && (portD & 0x08))
     1f32:	80 91 80 01 	lds	r24, 0x0180	; 0x800180 <iPlayDown>

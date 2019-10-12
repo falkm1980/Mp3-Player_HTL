@@ -17667,9 +17667,9 @@ PD1 = TX
 PD2 = S1 Taster
 PD3 = S2 Taster
 PD4 = S3 Taster
-PD5 = 
-PD6 = 
-PD7 = 
+PD5 = LED1
+PD6 = LED2
+PD7 = LED3
 </text>
 <text x="162.56" y="76.2" size="1.778" layer="96">MP3-Decoder</text>
 <text x="96.52" y="121.92" size="1.778" layer="97">(DREQ)</text>
@@ -17795,15 +17795,15 @@ PD7 =
 <attribute name="VALUE" x="205.74" y="63.5" size="1.778" layer="96"/>
 </instance>
 <instance part="S1" gate="1" x="226.06" y="157.48" smashed="yes">
-<attribute name="NAME" x="219.71" y="154.94" size="1.778" layer="95" rot="R90"/>
+<attribute name="NAME" x="220.98" y="158.75" size="1.778" layer="95" rot="R180"/>
 <attribute name="VALUE" x="222.25" y="160.655" size="1.778" layer="96" rot="R90"/>
 </instance>
 <instance part="S2" gate="1" x="238.76" y="157.48" smashed="yes">
-<attribute name="NAME" x="232.41" y="154.94" size="1.778" layer="95" rot="R90"/>
+<attribute name="NAME" x="233.68" y="158.75" size="1.778" layer="95" rot="R180"/>
 <attribute name="VALUE" x="234.95" y="160.655" size="1.778" layer="96" rot="R90"/>
 </instance>
 <instance part="S3" gate="1" x="251.46" y="157.48" smashed="yes">
-<attribute name="NAME" x="245.11" y="154.94" size="1.778" layer="95" rot="R90"/>
+<attribute name="NAME" x="246.38" y="158.75" size="1.778" layer="95" rot="R180"/>
 <attribute name="VALUE" x="247.65" y="160.655" size="1.778" layer="96" rot="R90"/>
 </instance>
 <instance part="GND14" gate="1" x="15.24" y="43.18" smashed="yes">
@@ -17878,16 +17878,16 @@ PD7 =
 <attribute name="VALUE" x="109.22" y="167.64" size="1.778" layer="96" rot="R180"/>
 </instance>
 <instance part="R2" gate="G$1" x="226.06" y="144.78" smashed="yes" rot="R270">
-<attribute name="NAME" x="222.4786" y="148.59" size="1.778" layer="95" rot="R270"/>
-<attribute name="VALUE" x="222.758" y="143.51" size="1.778" layer="96" rot="R270"/>
+<attribute name="NAME" x="219.71" y="146.2786" size="1.778" layer="95"/>
+<attribute name="VALUE" x="219.71" y="141.478" size="1.778" layer="96"/>
 </instance>
 <instance part="R8" gate="G$1" x="238.76" y="144.78" smashed="yes" rot="R270">
-<attribute name="NAME" x="235.1786" y="148.59" size="1.778" layer="95" rot="R270"/>
-<attribute name="VALUE" x="235.458" y="143.51" size="1.778" layer="96" rot="R270"/>
+<attribute name="NAME" x="232.41" y="146.2786" size="1.778" layer="95"/>
+<attribute name="VALUE" x="232.41" y="141.478" size="1.778" layer="96"/>
 </instance>
 <instance part="R9" gate="G$1" x="251.46" y="144.78" smashed="yes" rot="R270">
-<attribute name="NAME" x="247.8786" y="148.59" size="1.778" layer="95" rot="R270"/>
-<attribute name="VALUE" x="248.158" y="143.51" size="1.778" layer="96" rot="R270"/>
+<attribute name="NAME" x="245.11" y="146.2786" size="1.778" layer="95"/>
+<attribute name="VALUE" x="245.11" y="141.478" size="1.778" layer="96"/>
 </instance>
 <instance part="P+3" gate="1" x="238.76" y="170.18" smashed="yes">
 <attribute name="VALUE" x="238.76" y="172.72" size="1.778" layer="96" rot="R180"/>
@@ -18544,7 +18544,7 @@ PD7 =
 <wire x1="251.46" y1="152.4" x2="251.46" y2="149.86" width="0.1524" layer="91"/>
 <wire x1="251.46" y1="152.4" x2="246.38" y2="152.4" width="0.1524" layer="91"/>
 <junction x="251.46" y="152.4"/>
-<label x="243.84" y="149.86" size="1.778" layer="95"/>
+<label x="246.38" y="149.86" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="PD3" class="0">
@@ -18559,7 +18559,7 @@ PD7 =
 <wire x1="238.76" y1="152.4" x2="238.76" y2="149.86" width="0.1524" layer="91"/>
 <wire x1="238.76" y1="152.4" x2="233.68" y2="152.4" width="0.1524" layer="91"/>
 <junction x="238.76" y="152.4"/>
-<label x="228.6" y="149.86" size="1.778" layer="95"/>
+<label x="233.68" y="149.86" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="PD2" class="0">
@@ -18574,7 +18574,7 @@ PD7 =
 <wire x1="226.06" y1="152.4" x2="226.06" y2="149.86" width="0.1524" layer="91"/>
 <wire x1="226.06" y1="152.4" x2="220.98" y2="152.4" width="0.1524" layer="91"/>
 <junction x="226.06" y="152.4"/>
-<label x="215.9" y="149.86" size="1.778" layer="95"/>
+<label x="218.44" y="149.86" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="PD1" class="0">

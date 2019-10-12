@@ -13324,7 +13324,7 @@ PB5 = SCK (SPI)</text>
 <wire x1="7.62" y1="170.18" x2="76.2" y2="170.18" width="0.1524" layer="97"/>
 <wire x1="76.2" y1="170.18" x2="76.2" y2="99.06" width="0.1524" layer="97"/>
 <wire x1="76.2" y1="99.06" x2="7.62" y2="99.06" width="0.1524" layer="97"/>
-<text x="30.48" y="101.6" size="1.778" layer="97">ATmega328-XPlained</text>
+<text x="10.16" y="101.6" size="1.778" layer="97">ATmega328-XPlained</text>
 <text x="149.86" y="137.16" size="1.778" layer="97">PC0 = XDCS (MP3-Decoder)
 PC1 = DREQ (MP3-Decoder)
 PC2 =
@@ -13346,6 +13346,7 @@ PD6 =
 PD7 = 
 </text>
 <text x="162.56" y="76.2" size="1.778" layer="96">MP3-Decoder</text>
+<text x="96.52" y="121.92" size="1.778" layer="97">(DREQ)</text>
 </plain>
 <instances>
 <instance part="U$1" gate="G$1" x="177.8" y="99.06" smashed="yes"/>

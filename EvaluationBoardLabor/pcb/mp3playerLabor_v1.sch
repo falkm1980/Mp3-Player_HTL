@@ -20263,8 +20263,8 @@ Source: http://www.bourns.com/data/global/PDFs/3223.PDF</description>
 <parts>
 <part name="U$1" library="vs10xx" deviceset="VS1011" device=""/>
 <part name="FRAME1" library="frames" deviceset="A4L-LOC" device=""/>
-<part name="X1" library="con-yamaichi" deviceset="FPS009-300*" device="" technology="0" value="SD-Card holder"/>
-<part name="Q1" library="crystal" deviceset="CRYSTAL" device="HC49UP" value="12MHz"/>
+<part name="X1" library="con-yamaichi" deviceset="FPS009-300*" device="" technology="0" value="SD-Card"/>
+<part name="Q1" library="crystal" deviceset="CRYSTAL" device="HC49UP" value="12,288 MHz"/>
 <part name="GND1" library="supply1" deviceset="GND" device=""/>
 <part name="GND3" library="supply1" deviceset="GND" device=""/>
 <part name="+3V1" library="supply1" deviceset="+3V3" device=""/>

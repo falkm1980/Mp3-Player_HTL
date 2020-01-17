@@ -14,8 +14,8 @@
 //#define KEY_BACK	PD0
 //#define KEY_PLAY	PD1
 #define KEY_BACK	PD2
-#define KEY_PLAY	PD3
-#define KEY_FORWARD	PD4
+#define KEY_PLAY	PD4
+#define KEY_FORWARD	PD3
 
 #define BACK			1
 #define PLAY			2
@@ -131,8 +131,8 @@ uint8_t GetKey()
 		return 0;
 	
 	iLastValue = portD;
-	
-	if (iPlayDown && (portD & 0x08))
+	// PD3, S4
+	if (iPlayDown && (portD & 0x10))
 	{
 		iPlayDown = 0;
 		if (iVolumePressed != 0)
@@ -147,33 +147,36 @@ uint8_t GetKey()
 	// check Volume
 	if (iPlayDown)
 	{
-		if ((portD & 0x04) == 0x00)
+		// PD2, S2
+		if ((portD & 0x08) == 0x00)
 		{
 			iVolumePressed = 1;
 			return 5;
 		}
-		
-		if ((portD & 0x10) == 0x00)
+		// PD4, S3
+		if ((portD & 0x04) == 0x00)
 		{
 			iVolumePressed = 1;
 			return 4;
 		}
 	}
 
+	// PD2, S2
 	if (iBackDown && (portD & 0x04))
 	{
 		iBackDown = 0;
 		return 1;
 	}	
 
-	if (iForwardDown && (portD & 0x10))
+	// PD4, S3
+	if (iForwardDown && (portD & 0x08))
 	{
 		iForwardDown = 0;
 		return 3;
 	}
 	
 	
-	
+	// PD2, S2
 	if ((portD & 0x04) == 0x00)
 	{
 		if (!iBackDown)
@@ -182,8 +185,8 @@ uint8_t GetKey()
 			return 0;			
 		}
 	}
-		
-	if ((portD & 0x08) == 0x00)
+	// PD3, S4
+	if ((portD & 0x10) == 0x00)
 	{
 		if (!iPlayDown)
 		{
@@ -191,7 +194,8 @@ uint8_t GetKey()
 			return 0;
 		}
 	}
-	if ((portD & 0x10) == 0x00)
+	//PD4, S3
+	if ((portD & 0x08) == 0x00)
 	{
 		if (!iForwardDown)
 		{
@@ -273,6 +277,7 @@ uint8_t PlayFile(uint8_t numFile2Play)
 	BYTE buff[sizeBlock];
 	WORD br=0;
 	uint8_t serialData = 0x00;
+	uint16_t powerOffRepeat = 0;
 	
 	while(1)
 	{
@@ -326,6 +331,21 @@ uint8_t PlayFile(uint8_t numFile2Play)
 						VolumePlus();
 						_delay_ms(50);
 						break;
+					default:
+						if ((PIND & 0x04) == 0)
+						{
+							powerOffRepeat++;
+							if (powerOffRepeat > 1000)
+							{
+								while((PIND & 0x04) == 0);
+								PORTD = ~(1<<PD5);
+							}
+						}
+						else
+						{
+							powerOffRepeat = 0;
+						}
+						
 				}
 			} while (bytesWritten < br);
 			
@@ -421,7 +441,8 @@ int main(void)
 
 		SendString(cText);
 		memset(cText, 0, 128);
-			
+	
+		// in Main function
 		while(1)
 		{
 			uint8_t ret = PlayFile(file2Play);
@@ -439,6 +460,10 @@ int main(void)
 					SendString("Play 1");
 
 					_delay_ms(500);
+					//if ((PIND & 0x10) == 0 ) // switch MP3-Player off
+					//{
+						//PORTD = ~(1<<PD5);
+					//}
 					while(GetKey() != PLAY)
 					{
 					}

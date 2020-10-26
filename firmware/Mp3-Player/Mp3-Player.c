@@ -268,8 +268,8 @@ uint8_t PlayFile(uint8_t numFile2Play)
 	res = pf_open(fno.fname);
 	if (res)
 	{
-		StartSineTest();
-		_delay_ms(2000);
+//		StartSineTest();
+		_delay_ms(100);
 		return 0;
 	}
 

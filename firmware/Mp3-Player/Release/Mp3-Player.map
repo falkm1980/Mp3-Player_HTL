@@ -87,6 +87,8 @@ Discarded input sections
                 0x00000000       0x32 MP3Decoder/vs1011.o
  .text.SendNulls
                 0x00000000       0x1a MP3Decoder/vs1011.o
+ .text.StartSineTest
+                0x00000000       0x30 MP3Decoder/vs1011.o
  .text.StopSineTest
                 0x00000000       0x30 MP3Decoder/vs1011.o
  .text.WriteDebugByte
@@ -364,7 +366,7 @@ END GROUP
 .rela.plt
  *(.rela.plt)
 
-.text           0x00000000     0x1d3c
+.text           0x00000000     0x1d08
  *(.vectors)
  .vectors       0x00000000       0x68 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.3.300/gcc/dev/atmega168a/avr5/crtatmega168a.o
                 0x00000000                __vector_default
@@ -500,84 +502,81 @@ END GROUP
                 0x00001120       0x5a Mp3-Player.o
                 0x00001120                GetNumberFiles
  .text.PlayFile
-                0x0000117a      0x22e Mp3-Player.o
+                0x0000117a      0x22a Mp3-Player.o
                 0x0000117a                PlayFile
  .text.startup.main
-                0x000013a8      0x1f0 Mp3-Player.o
-                0x000013a8                main
+                0x000013a4      0x1f0 Mp3-Player.o
+                0x000013a4                main
  .text.HardwareReset
-                0x00001598       0x22 MP3Decoder/vs1011.o
-                0x00001598                HardwareReset
+                0x00001594       0x22 MP3Decoder/vs1011.o
+                0x00001594                HardwareReset
  .text.WriteCommand
-                0x000015ba       0x2e MP3Decoder/vs1011.o
-                0x000015ba                WriteCommand
+                0x000015b6       0x2e MP3Decoder/vs1011.o
+                0x000015b6                WriteCommand
  .text.InitVS1011e
-                0x000015e8       0x36 MP3Decoder/vs1011.o
-                0x000015e8                InitVS1011e
+                0x000015e4       0x36 MP3Decoder/vs1011.o
+                0x000015e4                InitVS1011e
  .text.SoftwareReset
-                0x0000161e       0x1c MP3Decoder/vs1011.o
-                0x0000161e                SoftwareReset
+                0x0000161a       0x1c MP3Decoder/vs1011.o
+                0x0000161a                SoftwareReset
  .text.WriteMP3DataByte
-                0x0000163a        0xa MP3Decoder/vs1011.o
-                0x0000163a                WriteMP3DataByte
- .text.StartSineTest
-                0x00001644       0x30 MP3Decoder/vs1011.o
-                0x00001644                StartSineTest
+                0x00001636        0xa MP3Decoder/vs1011.o
+                0x00001636                WriteMP3DataByte
  .text.VolumePlus
-                0x00001674       0x22 MP3Decoder/vs1011.o
-                0x00001674                VolumePlus
+                0x00001640       0x22 MP3Decoder/vs1011.o
+                0x00001640                VolumePlus
  .text.VolumeMinus
-                0x00001696       0x26 MP3Decoder/vs1011.o
-                0x00001696                VolumeMinus
+                0x00001662       0x26 MP3Decoder/vs1011.o
+                0x00001662                VolumeMinus
  .text.init_spi
-                0x000016bc       0x14 spi.o
-                0x000016bc                init_spi
+                0x00001688       0x14 spi.o
+                0x00001688                init_spi
  .text.xmit_spi
-                0x000016d0        0xa spi.o
-                0x000016d0                xmit_spi
- .text.rcv_spi  0x000016da        0xe spi.o
-                0x000016da                rcv_spi
+                0x0000169c        0xa spi.o
+                0x0000169c                xmit_spi
+ .text.rcv_spi  0x000016a6        0xe spi.o
+                0x000016a6                rcv_spi
  .text.dly_100us
-                0x000016e8        0x4 spi.o
-                0x000016e8                dly_100us
+                0x000016b4        0x4 spi.o
+                0x000016b4                dly_100us
  .text.libgcc.div
-                0x000016ec       0x44 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_udivmodsi4.o)
-                0x000016ec                __udivmodsi4
+                0x000016b8       0x44 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_udivmodsi4.o)
+                0x000016b8                __udivmodsi4
  .text.libgcc.mul
-                0x00001730       0x16 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_muluhisi3.o)
-                0x00001730                __muluhisi3
+                0x000016fc       0x16 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_muluhisi3.o)
+                0x000016fc                __muluhisi3
  .text.libgcc.mul
-                0x00001746       0x1e c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_umulhisi3.o)
-                0x00001746                __umulhisi3
+                0x00001712       0x1e c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_umulhisi3.o)
+                0x00001712                __umulhisi3
  .text.avr-libc
-                0x00001764       0x44 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libc.a(sprintf.o)
-                0x00001764                sprintf
+                0x00001730       0x44 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libc.a(sprintf.o)
+                0x00001730                sprintf
  .text.avr-libc
-                0x000017a8      0x3c2 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libc.a(vfprintf_std.o)
-                0x000017a8                vfprintf
+                0x00001774      0x3c2 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libc.a(vfprintf_std.o)
+                0x00001774                vfprintf
  .text.avr-libc
-                0x00001b6a       0x16 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libc.a(strnlen_P.o)
-                0x00001b6a                strnlen_P
+                0x00001b36       0x16 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libc.a(strnlen_P.o)
+                0x00001b36                strnlen_P
  .text.avr-libc
-                0x00001b80       0x16 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libc.a(strnlen.o)
-                0x00001b80                strnlen
+                0x00001b4c       0x16 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libc.a(strnlen.o)
+                0x00001b4c                strnlen
  .text.avr-libc
-                0x00001b96       0x78 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libc.a(fputc.o)
-                0x00001b96                fputc
+                0x00001b62       0x78 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libc.a(fputc.o)
+                0x00001b62                fputc
  .text.avr-libc
-                0x00001c0e       0xbc c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libc.a(ultoa_invert.o)
-                0x00001c0e                __ultoa_invert
+                0x00001bda       0xbc c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libc.a(ultoa_invert.o)
+                0x00001bda                __ultoa_invert
  .text.libgcc.prologue
-                0x00001cca       0x38 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_prologue.o)
-                0x00001cca                __prologue_saves__
+                0x00001c96       0x38 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_prologue.o)
+                0x00001c96                __prologue_saves__
  .text.libgcc.prologue
-                0x00001d02       0x36 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_epilogue.o)
-                0x00001d02                __epilogue_restores__
-                0x00001d38                . = ALIGN (0x2)
+                0x00001cce       0x36 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_epilogue.o)
+                0x00001cce                __epilogue_restores__
+                0x00001d04                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x00001d38        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
-                0x00001d38                _exit
-                0x00001d38                exit
+ .fini9         0x00001d04        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
+                0x00001d04                _exit
+                0x00001d04                exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -596,11 +595,11 @@ END GROUP
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x00001d38        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
+ .fini0         0x00001d04        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
  *(.fini0)
-                0x00001d3c                _etext = .
+                0x00001d08                _etext = .
 
-.data           0x00800100       0x7a load address 0x00001d3c
+.data           0x00800100       0x7a load address 0x00001d08
                 0x00800100                PROVIDE (__data_start, .)
  *(.data)
  *(.data*)
@@ -642,8 +641,8 @@ END GROUP
                 0x00800183                iVolume
  *(COMMON)
                 0x00800184                PROVIDE (__bss_end, .)
-                0x00001d3c                __data_load_start = LOADADDR (.data)
-                0x00001db6                __data_load_end = (__data_load_start + SIZEOF (.data))
+                0x00001d08                __data_load_start = LOADADDR (.data)
+                0x00001d82                __data_load_end = (__data_load_start + SIZEOF (.data))
 
 .noinit         0x00800184        0x0
                 [!provide]                PROVIDE (__noinit_start, .)

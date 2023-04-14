@@ -360,7 +360,15 @@ uint8_t PlayFile(uint8_t numFile2Play)
 	return 0;
 }
 
-
+void PeepNtimes(int times)
+{
+	for (int i=0; i<=times; i++) {
+		StartSineTest();
+		_delay_ms(200);
+		StopSineTest();
+		_delay_ms(200);	
+	}
+}
 
 int main(void)
 {
@@ -499,6 +507,9 @@ int main(void)
 	{
 		pf_mount(0);
 
+		PeepNtimes(3);
+		// switch of MP3-Player again.
+		PORTD = ~(1<<PD5);
 		while(1)
 		{
 		}
